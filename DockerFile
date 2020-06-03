@@ -1,16 +1,9 @@
-From alpine:latest
-
-Run apk add --no-cache python3-dev \
-    && pip3 install --upgrade pip
+FROM python:3.7.2-stretch
 
 WORKDIR /app
 
-COPY . /app
+ADD . /app
 
-RUN pip3 --no-cache-dir install -r requirments.txt
+RUN pip install -r requirements.txt
 
-EXPOSE 5000
-
-ENTRYPOINT ["python3"]
-
-CMD["app.py"]
+CMD python app.py
